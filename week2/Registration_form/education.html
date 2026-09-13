@@ -1,0 +1,140 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration - Educational Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 450px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        input[type="button"],
+        input[type="submit"] {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        input[type="button"] {
+            background-color: #555;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+        }
+
+        input[type="button"]:hover {
+            background-color: #333;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Registration Form</h2>
+        <h3>Educational Details</h3>
+
+        <form>
+
+            <label>Highest Qualification:</label>
+            <select name="qualification">
+                <option value="">-- Select --</option>
+                <option value="10th">10th</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="diploma">Diploma</option>
+                <option value="degree">Degree</option>
+                <option value="postgraduate">Post Graduate</option>
+            </select>
+            <br><br>
+
+            <label>College/School Name:</label>
+            <input type="text" name="college" required>
+            <br><br>
+
+            <label>Course:</label>
+            <input type="text" name="course" placeholder="e.g. B.Tech CSE">
+            <br><br>
+
+            <label>Year of Passing:</label>
+            <input type="number" name="year" min="2000" max="2030">
+            <br><br>
+
+            <label>Percentage / CGPA:</label>
+            <input type="text" name="percentage">
+            <br><br>
+
+            <label>Skills:</label>
+            <br>
+
+            <input type="checkbox" name="skills" value="C"> C
+            <input type="checkbox" name="skills" value="Java"> Java
+            <input type="checkbox" name="skills" value="Python"> Python
+            <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+
+            <div class="buttons">
+                <input type="button" value="Back" onclick="history.back()">
+                <input type="submit" value="Submit">
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
+```
