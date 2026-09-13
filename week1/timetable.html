@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Time Table - CSE A</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            background: white;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .college-header {
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .college-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .college-header h4 {
+            margin: 3px 0;
+            font-size: 12px;
+        }
+
+        .college-header .dept {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .college-header .title {
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 3px;
+        }
+
+        .college-header .class {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .year {
+            text-align: left;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .main-table {
+            table-layout: fixed;
+            font-size: 12px;
+        }
+
+        .main-table th,
+        .main-table td {
+            border: 1px solid #000;
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px 4px;
+            font-weight: bold;
+        }
+
+        .main-table th {
+            height: 60px;
+            font-size: 11px;
+        }
+
+        .day {
+            width: 6%;
+        }
+
+        .time {
+            width: 13.4%;
+        }
+
+        .lunch {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .main-table .mon,
+        .main-table .tue,
+        .main-table .wed,
+        .main-table .thu,
+        .main-table .fri,
+        .main-table .sat {
+            height: 52px;
+        }
+
+        .faculty-table {
+            margin-top: 5px;
+            font-size: 11px;
+            table-layout: fixed;
+        }
+
+        .faculty-table td {
+            border: 1px solid #000;
+            padding: 6px 7px;
+            vertical-align: middle;
+        }
+
+        .faculty-table td:nth-child(1) {
+            width: 27%;
+            font-weight: bold;
+        }
+
+        .faculty-table td:nth-child(2) {
+            width: 16%;
+        }
+
+        .faculty-table td:nth-child(3) {
+            width: 31%;
+            font-weight: bold;
+        }
+
+        .faculty-table td:nth-child(4) {
+            width: 26%;
+        }
+
+        .faculty-table .faculty-name {
+            font-weight: normal;
+        }
+
+        .faculty-table .label {
+            font-weight: bold;
+        }
+
+        .extra {
+            border: 1px solid #000;
+            border-top: none;
+            padding: 7px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 18px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .signature-box {
+            width: 25%;
+            text-align: center;
+        }
+
+        .signature-box:first-child {
+            text-align: left;
+        }
+
+        .signature-box:last-child {
+            text-align: right;
+        }
+
+        .signature-line {
+            height: 28px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .principal {
+            margin-top: 8px;
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 8mm;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .page {
+                max-width: none;
+                width: 100%;
+            }
+
+            .college-header h2 {
+                font-size: 16px;
+            }
+
+            .college-header h4 {
+                font-size: 10px;
+            }
+
+            .college-header .dept {
+                font-size: 12px;
+            }
+
+            .college-header .title {
+                font-size: 13px;
+            }
+
+            .college-header .class {
+                font-size: 11px;
+            }
+
+            .main-table {
+                font-size: 9px;
+            }
+
+            .main-table th,
+            .main-table td {
+                padding: 5px 2px;
+            }
+
+            .main-table th {
+                font-size: 8px;
+                height: 45px;
+            }
+
+            .main-table .mon,
+            .main-table .tue,
+            .main-table .wed,
+            .main-table .thu,
+            .main-table .fri,
+            .main-table .sat {
+                height: 42px;
+            }
+
+            .faculty-table {
+                font-size: 8px;
+            }
+
+            .faculty-table td {
+                padding: 4px;
+            }
+
+            .extra {
+                font-size: 8px;
+                padding: 4px;
+            }
+
+            .signatures {
+                font-size: 8px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <div class="college-header">
+            <h2>VASAVI COLLEGE OF ENGINEERING (AUTONOMOUS)</h2>
+            <h4>IBRAHIMBAGH, HYDERABAD-31.</h4>
+
+            <div class="dept">
+                DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
+            </div>
+
+            <div class="title">
+                TIME TABLE (ROOM NO. R-301)
+            </div>
+
+            <div class="class">
+                CLASS: III B.E. V - SEMESTER (CSE - A)
+            </div>
+        </div>
+
+        <div class="year">
+            YEAR: 2026-27
+        </div>
+
+        <table class="main-table">
+
+            <tr>
+                <th class="day">
+                    TIME /<br>DAY
+                </th>
+
+                <th class="time">
+                    9.40 AM<br>
+                    TO<br>
+                    10.40 AM
+                </th>
+
+                <th class="time">
+                    10.40 AM<br>
+                    TO<br>
+                    11.40 AM
+                </th>
+
+                <th class="time">
+                    11.40 AM<br>
+                    TO<br>
+                    12.40 PM
+                </th>
+
+                <th class="time">
+                    12.40 PM<br>
+                    TO<br>
+                    1.20 PM
+                </th>
+
+                <th class="time">
+                    1.20 PM<br>
+                    TO<br>
+                    2.20 PM
+                </th>
+
+                <th class="time">
+                    2.20 PM<br>
+                    TO<br>
+                    3.20 PM
+                </th>
+
+                <th class="time">
+                    3.20 PM<br>
+                    TO<br>
+                    4.20 PM
+                </th>
+            </tr>
+
+            <tr class="mon">
+                <td>MON</td>
+
+                <td colspan="2">
+                    IoT Lab [Lab-IV]
+                </td>
+
+                <td>
+                    Mentor / FSWD
+                </td>
+
+                <td rowspan="6" class="lunch">
+                    LUNCH
+                </td>
+
+                <td>
+                    OE
+                </td>
+
+                <td>
+                    IoT
+                </td>
+
+                <td>
+                    CN
+                </td>
+            </tr>
+
+            <tr class="tue">
+                <td>TUE</td>
+
+                <td>
+                    AI
+                </td>
+
+                <td colspan="2">
+                    SDC-VI(TS-III)
+                </td>
+
+                <td>
+                    OE
+                </td>
+
+                <td>
+                    CN
+                </td>
+
+                <td>
+                    Sports / FSWD
+                </td>
+            </tr>
+
+            <tr class="wed">
+                <td>WED</td>
+
+                <td>
+                    DT
+                </td>
+
+                <td>
+                    AI
+                </td>
+
+                <td>
+                    IoT
+                </td>
+
+                <td>
+                    OE
+                </td>
+
+                <td colspan="2">
+                    AIML Lab [Lab-VI]
+                </td>
+            </tr>
+
+            <tr class="thu">
+                <td>THU</td>
+
+                <td>
+                    CN
+                </td>
+
+                <td colspan="2">
+                    CN Lab [Project Lab]
+                </td>
+
+                <td colspan="2">
+                    SDC-VI(TS-III)
+                </td>
+
+                <td>
+                    DT
+                </td>
+            </tr>
+
+            <tr class="fri">
+                <td>FRI</td>
+
+                <td>
+                    IoT
+                </td>
+
+                <td>
+                    AI
+                </td>
+
+                <td>
+                    CN (T)
+                </td>
+
+                <td>
+                    FSWD
+                </td>
+
+                <td colspan="2">
+                    FSWD Lab [Project Lab]
+                </td>
+            </tr>
+
+            <tr class="sat">
+                <td>SAT</td>
+
+                <td>
+                    FSWD
+                </td>
+
+                <td colspan="2">
+                    TBP-I / CISCO [Lab-V]
+                </td>
+
+                <td colspan="2">
+                    ECA-II
+                </td>
+
+                <td>
+                    IoT
+                </td>
+            </tr>
+
+        </table>
+
+        <table class="faculty-table">
+
+            <tr>
+                <td>
+                    U124PCS10CS-IoT (Internet of Things)
+                </td>
+
+                <td>
+                    M. Alphonsa
+                </td>
+
+                <td>
+                    U24HSS10EHT-SDC-VI(TS-III)
+                    (Skill Development Course - VI
+                    (Communication Skills-III))
+                </td>
+
+                <td>
+                    Basheer Shaik (9966112343)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    U124PCS20CS-FSWD (Full Stack Web Development)
+                </td>
+
+                <td>
+                    S. Susmitha
+                </td>
+
+                <td>
+                    U124PCS10CS-SDC-VI(TS-III)
+                    (Skill Development Course - VI
+                    (Technical Skills - III))
+                </td>
+
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>
+                    U124PCS30CS-CN (Computer Networks)
+                </td>
+
+                <td>
+                    T. Naishitha
+                </td>
+
+                <td>
+                    U124PCS11CS-IoT Lab
+                    (Internet of Things Lab)
+                </td>
+
+                <td>
+                    M. Alphonsa, M. Prashanthi, D. Likhitha
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    U124PCS40CS-AI (Artificial Intelligence)
+                </td>
+
+                <td>
+                    Dr. T. Adilakshmi
+                </td>
+
+                <td>
+                    U124PCS21CS-FSWD Lab
+                    (Full Stack Web Development Lab)
+                </td>
+
+                <td>
+                    S. Susmitha, U. Mamatha, P. Manju Reddy
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    U24HS010EHT-DT (Design Thinking)
+                </td>
+
+                <td>
+                    Lucy Spam (C0539918008)
+                </td>
+
+                <td>
+                    U124PCS31CS-CN Lab
+                    (Computer Networks Lab)
+                </td>
+
+                <td>
+                    T. Naishitha, K. Sushma Kumari, Nikhila P
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="2">
+                    OE-III
+                </td>
+
+                <td>
+                    U24OES10CS
+                </td>
+
+                <td>
+                    Introduction to Operating Systems
+                </td>
+
+                <td>
+                    P. Nancy Celine
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    U24OES20CS
+                </td>
+
+                <td>
+                    Fundamentals of Artificial Intelligence
+                </td>
+
+                <td>
+                    B. Meenathi<br>
+                    D. Likhitha
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                    U124PCS41CS-AIML Lab
+                    (Artificial Intelligence and Machine Learning Lab)
+                </td>
+
+                <td>
+                    Dr. S. Komal Kour, S. Swetha, P. Manju Reddy
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>
+                    U24CPW519CS - Theme based Project-I
+                    (TBP-I) / CISCO
+                </td>
+
+                <td>
+                    T. Naishitha, K. Manasa
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="extra">
+            Extra-curricular Activity-II / Sports / Library -
+            Class Coordinator : T. Naishitha
+        </div>
+
+        <div class="signatures">
+
+            <div class="signature-box">
+                <div class="signature-line">✓</div>
+                Time Table - I/C
+            </div>
+
+            <div class="signature-box">
+                <div class="signature-line">
+                    NPH Gadde
+                </div>
+                HEAD, CSE
+            </div>
+
+            <div class="signature-box">
+                <div class="signature-line">
+                    T. Adilakshmi
+                </div>
+                Director, CSE
+            </div>
+
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                PRINCIPAL
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
