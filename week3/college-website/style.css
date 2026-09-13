@@ -1,0 +1,153 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f3f0;
+    color: #333;
+}
+
+header {
+    background-color: #7b1e3a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #f5d58a;
+}
+
+nav {
+    background-color: #3d0c1d;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 22px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f5d58a;
+}
+
+.hero {
+    background-color: #f5d58a;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h2 {
+    color: #7b1e3a;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #444;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background-color: #7b1e3a;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+.btn:hover {
+    background-color: #3d0c1d;
+}
+
+.container {
+    width: 85%;
+    margin: 35px auto;
+}
+
+.section {
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.section h2 {
+    text-align: center;
+    color: #7b1e3a;
+    margin-bottom: 25px;
+}
+
+.courses {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.course {
+    width: 200px;
+    padding: 25px;
+    text-align: center;
+    background-color: #f8eeee;
+    border-radius: 10px;
+    border-top: 5px solid #7b1e3a;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px #ccc;
+}
+
+.course h3 {
+    color: #7b1e3a;
+}
+
+.facilities {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.facility {
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff8e5;
+    border-radius: 10px;
+}
+
+.facility h3 {
+    color: #7b1e3a;
+}
+
+.contact {
+    text-align: center;
+    line-height: 1.8;
+}
+
+footer {
+    background-color: #3d0c1d;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
